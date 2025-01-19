@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  task:
+    scheduling:
+      pool:
+        size: 5 #스래드 풀 조정
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopping_mall
+    username: root
+    password: jys0917@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update # 테이블 생성 및 업데이트 전략 (create, create-drop, update, validate, none)
+    properties:
+      hibernate:
+        format_sql: true # SQL 포맷팅
+        highlight_sql: true # 하이라이트 SQL 출력
+        use_sql_comments: true # 실제 JPQL SQL 주석 사용
+  data:
+    web:
+      pageable:
+        default-page-size: 10  # 페이지당 기본 데이터 수
+        max-page-size: 100     # 한 페이지당 최대 데이터 수
+        one-indexed-parameters: true  # 페이지 시작을 1부터
+        page-parameter: page    # 페이지 파라미터명
+        size-parameter: size    # 사이즈 파라미터명
+
+logging:
+  level:
+    org.springframework.security.web: trace
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+    org.springframework.transaction.interceptor: trace
+
+
+jwt-secret-key:
+  2312464914809sadsa161785970asfgsfdgkavd
